@@ -16,10 +16,15 @@ class App < Sinatra::Base
 
   # Return input phrase input number of times
   get '/say/:number/:phrase' do
+    display = ''
     @number = params[:number].to_i
     @phrase = params[:phrase]
 
-    erb :phrase
+    @number.times do
+      display += @phrase
+    end
+
+    display
   end
 
   # Return all inputs in 1 string
