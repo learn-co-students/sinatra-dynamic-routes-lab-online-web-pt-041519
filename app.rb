@@ -28,11 +28,25 @@ class App < Sinatra::Base
     "#{@string}"   
   end
 
+#  a.+(b), where the + method in the object referred to by variable a is called with b as its argument.
+
   get '/:operation/:number1/:number2' do 
-    # result = params[:number1].to_i.send(params[:operation], params[:number2].to_i)
-    # "#{result}"
-#     eval("#{params[:number1].to_i}#{params[:operation]}#{params[:number2].to_i
-# }")
+    num1 = params[:number1].to_i
+    num2 = params[:number2].to_i
+    op = params[:operation] 
+
+    case op 
+    when "add"
+      result = num1 + num2
+    when "subtract"
+      result = num1 - num2
+    when "multiply"
+      result = num1 * num2
+    else "divide"
+      result = num1 / num2
+    end
+    "#{result}"
+
   end
 
 
